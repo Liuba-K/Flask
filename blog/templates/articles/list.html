@@ -6,10 +6,13 @@ Articles list
 <h1>Articles</h1>
 <div>
     <ul>
-        {% for title in articles %}
+        {% for article_id in articles %}
+
         <li>
-            {{ title }}
-        </li>
+                    <a href="{{ url_for('articles_app.details', article_id=article_id) }}">
+                        {{ articles[article_id]}}
+                    </a>
+                </li>
         {% endfor %}
 
 
