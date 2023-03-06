@@ -22,7 +22,7 @@ def create_users():
     """
     from blog.models import User
     admin = User(username="admin", is_staff=True)
-    james = User(username="james")
+    james = User(username="james")#, email='dfsf@email.com', password=generate_password_hash('test123'))
     db.session.add(admin)
     db.session.add(james)
     db.session.commit()
