@@ -2,7 +2,8 @@
      <div class="navbar-nav ms-auto">
         {% if current_user.is_authenticated %}
             <a class="nav-link" href="{{ url_for('auth_app.logout') }}">Logout</a>
-        {% else %}
+
+         {% else %}
             <a href="{{ url_for('auth_app.login') }}"
                class="nav-link {% if request.endpoint == 'login' -%}active{%- endif %}">
                 Login
@@ -25,7 +26,9 @@
                 >
                     {{ label }}
                 </a>
+
                 {% endfor %}
+
             </div>
         </div>
 
