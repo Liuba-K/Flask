@@ -12,6 +12,8 @@ class User(db.Model, UserMixin):
     email = Column(String(255), nullable=False, default="", server_default="")
     #email = Column(String(250), unique=True)
     #password = Column(String(250))
+    # Нужен для security!
+    active = db.Column(db.Boolean())
 
 
 def __repr__(self):
