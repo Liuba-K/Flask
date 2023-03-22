@@ -8,14 +8,6 @@ from blog.models.database import db
 #from blog.app import db, create_app
 #app = create_app()
 
-@app.cli.command("init-db")
-def init_db():
-    """
-    Run in your terminal:
-    flask init-db
-    """
-    db.create_all()
-    print("done!")
 
 @app.cli.command("create-admin")
 def create_users():
@@ -28,9 +20,7 @@ def create_users():
     admin = User(username="admin", is_staff=True, email='dfsf@email.com')
     admin.password = os.environ.get("ADMIN_PASSWORD") or "adminpass"
 
-    #james = User(username="james")#, password=generate_password_hash('test123'))#, email='dfsf@email.com', p
     db.session.add(admin)
-    #db.session.add(james)
     db.session.commit()
     print("done! created admin:", admin)
 

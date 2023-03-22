@@ -20,6 +20,7 @@
         {% for field in ['username', 'password'] %}
             {{ render_field(form[field]) }}
         {% endfor %}
+
     {# submit #}
         <div>
             {{ form.submit(class="btn btn-primary btn-lg") }}
