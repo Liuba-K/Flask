@@ -6,7 +6,7 @@ class UserBaseForm(FlaskForm):
     first_name = StringField("First Name")
     last_name = StringField("Last Name")
     username = StringField(
-        "username",
+        "Username",
         [validators.DataRequired()],
     )
     email = StringField(
@@ -34,7 +34,7 @@ class RegistrationForm(UserBaseForm):
 
 class LoginForm(FlaskForm):
     username = StringField(
-        "username",
+        "Username",
         [validators.DataRequired()],
     )
     password = PasswordField(
