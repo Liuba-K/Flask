@@ -8,7 +8,6 @@ from blog.models.database import db
 #from blog.app import db, create_app
 #app = create_app()
 
-
 @app.cli.command("create-admin")
 def create_users():
     """
@@ -17,7 +16,7 @@ def create_users():
     > done! created users: <User #1 'admin'> <User #2 'james'>
     """
     from blog.models import User
-    admin = User(username="admin", is_staff=True, email='dfsf@email.com')
+    admin = User(username="admin", is_staff=True, email='dfsfbcv@email.com')
     admin.password = os.environ.get("ADMIN_PASSWORD") or "adminpass"
 
     db.session.add(admin)
