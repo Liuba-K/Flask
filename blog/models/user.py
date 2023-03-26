@@ -1,8 +1,9 @@
 import flask_bcrypt
 from sqlalchemy import Column, Integer, String, Boolean, LargeBinary
 from blog.models.database import db
-from flask_login import UserMixin
 
+from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -18,6 +19,8 @@ class User(db.Model, UserMixin):
     _password = Column(LargeBinary, nullable=True)
     # Нужен для security!
     #active = db.Column(db.Boolean())
+    author = relationship("Author", uselist=False, back_populates="user")
+
     @property
     def password(self):
         return self._password
