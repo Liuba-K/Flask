@@ -1,12 +1,11 @@
 import os
-
 from werkzeug.security import generate_password_hash
-
 from blog.app import app
 
 from blog.models.database import db
-#from blog.app import db, create_app
+#from blog.models.database import db, create_app
 #app = create_app()
+
 
 @app.cli.command("create-admin")
 def create_users():
@@ -29,7 +28,6 @@ if __name__ == "__main__":
         debug=True,
         #port=5010,
     )
-
 
 """
 #вариант 2
