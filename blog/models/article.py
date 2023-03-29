@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 #from blog.models.database import db
 from datetime import datetime
 from blog.models.database import db
-
+from blog.models.article_tag import article_tag_association_table
 
 class Article(db.Model):
     __tablename__ = 'articles'
@@ -16,3 +16,4 @@ class Article(db.Model):
     dt_updated = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     author = relationship('Author', back_populates='articles')
+    tags = relationship('Tag', secondary=article_tag_association_table, back_populates='articles')
