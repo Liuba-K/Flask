@@ -37,7 +37,7 @@ def article_details(article_id):
     return render_template("articles/details.html", article=article)
 
 @articles_app.route("/create/", methods=["GET", "POST"], endpoint="create")
-@login_required
+@login_required #only авторизованные пользователи
 def create_article():
     error = None
     form = CreateArticleForm(request.form)
