@@ -1,10 +1,7 @@
 import os
 from werkzeug.security import generate_password_hash
 from blog.app import app
-
 from blog.models.database import db
-#from blog.models.database import db, create_app
-#app = create_app()
 
 
 @app.cli.command("create-admin")
@@ -29,9 +26,4 @@ if __name__ == "__main__":
         #port=5010,
     )
 
-"""
-#вариант 2
-from blog.app import create_app
 
-app = create_app()
-"""

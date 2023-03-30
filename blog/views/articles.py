@@ -53,7 +53,7 @@ def create_article():
         if form.tags.data:   # если в форму были переданы теги (были выбраны)
             selected_tags = Tag.query.filter(Tag.id.in_(form.tags.data))
             for tag in selected_tags:
-                article.tags.append(tag) # добавляем выбранные теги к статье
+                article.tags.append(tag)  # добавляем выбранные теги к статье
         if current_user.author:
             # use existing author if present
             article.author = current_user.author
