@@ -8,7 +8,7 @@ from blog.views.auth import login_manager, auth_app
 from blog.views.authors import authors_app
 
 from blog.models.database import db
-
+from blog.admin import admin
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///D:\\IT\\projects\\Flask\\sqlite.db"
@@ -21,7 +21,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 app.config["SECRET_KEY"] = "abcdefg123456"
 app.config["WTF_CSRF_ENABLED"] = True  # по умолчанию
-
+app.config["FLASK_ADMIN_SWATCH"] = 'cosmo'
 
 app.register_blueprint(users_app, url_prefix="/users")
 app.register_blueprint(articles_app, url_prefix="/articles")
@@ -32,6 +32,7 @@ migrate = Migrate(app, db, compare_type=True)
 login_manager.init_app(app)
 db.init_app(app)
 flask_bcrypt.init_app(app)
+admin.init_app(app)
 
 @app.route("/")
 def index():
