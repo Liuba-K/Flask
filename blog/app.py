@@ -9,6 +9,9 @@ from blog.views.authors import authors_app
 
 from blog.models.database import db
 from blog.admin import admin
+
+from blog.api import init_api
+
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///D:\\IT\\projects\\Flask\\sqlite.db"
@@ -21,7 +24,11 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 app.config["SECRET_KEY"] = "abcdefg123456"
 app.config["WTF_CSRF_ENABLED"] = True  # по умолчанию
-app.config["FLASK_ADMIN_SWATCH"] = 'cosmo'
+app.config["FLASK_ADMIN_SWATCH"] = "cosmo"
+
+app.config["OPENAPI_URL_PREFIX"] = "/api/swagger"
+app.config["OPENAPI_SWAGGER_UI_PATH"] = "/"
+app.config["OPENAPI_SWAGGER_UI_VERSION"] = "3.22.0"
 
 app.register_blueprint(users_app, url_prefix="/users")
 app.register_blueprint(articles_app, url_prefix="/articles")
@@ -33,37 +40,13 @@ login_manager.init_app(app)
 db.init_app(app)
 flask_bcrypt.init_app(app)
 admin.init_app(app)
+api = init_api(app)
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
 
-"""
-@app.route("/<str:name>")
-def index(name: str):
-    return f"Hello {name}", 201  #предупреждение
-"""
-
-
-"""
-#все заменить на этот код. Вариант 2
-# Фабрика по созданию файлов и использованием Blueprint
-from flask import Flask
-
-from blog.user.views import user
-#from blog.report.views import report
-
-def create_app() -> Flask:
-    app = Flask(__name__)
-    register_blueprints(app)
-    return app
-    
-def register_blueprints(app: Flask):
-    app.register_blueprint(user)
-    #app.register_blueprint(report)
-
-"""
 @app.cli.command("create-tags")
 def create_tags():
     """
