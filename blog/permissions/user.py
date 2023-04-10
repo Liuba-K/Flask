@@ -19,7 +19,7 @@ class UserPermission(PermissionMixin):
         "last_name",
     ]
 
-    def get(self, *args, many=True, user_permission: PermissionUser = None, **kwargs)-> PermissionForGet:
+    def get(self, *args, many=True, user_permission: PermissionUser = None, **kwargs) -> PermissionForGet:
         """
         Set available columns
         :param args:
@@ -37,7 +37,8 @@ class UserPermission(PermissionMixin):
         self.permission_for_patch.allow_columns = (self.PATCH_AVAILABLE_FIELDS, 10)
         return self.permission_for_patch
 
-    def patch_data(self, *args, data: dict = None, obj: User = None, user_permission: PermissionUser = None, **kwargs) -> dict:
+    def patch_data(self, *args, data: dict = None, obj: User = None, user_permission: PermissionUser = None, **kwargs) \
+            -> dict:
         permission_for_patch = user_permission.permission_for_patch_permission(model=User)
 
         return {

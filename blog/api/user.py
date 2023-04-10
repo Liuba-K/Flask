@@ -14,6 +14,7 @@ class UserList(ResourceList):
         "permission_get": [UserPermission],
     }
 
+
 class UserDetail(ResourceDetail):
     schema = UserSchema
     data_layer = {

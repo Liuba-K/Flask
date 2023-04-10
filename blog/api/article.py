@@ -6,11 +6,13 @@ from blog.models import Article
 
 
 class ArticleListEvents(EventsResource):
+
     def event_get_count(self):
         return {"count": Article.query.count()}
 
 
 class ArticleList(ResourceList):
+    events = ArticleListEvents
     schema = ArticleSchema
     data_layer = {
         "session": db.session,
@@ -19,7 +21,6 @@ class ArticleList(ResourceList):
 
 
 class ArticleDetail(ResourceDetail):
-    events = ArticleListEvents
     schema = ArticleSchema
     data_layer = {
         "session": db.session,
