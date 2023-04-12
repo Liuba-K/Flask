@@ -1,3 +1,5 @@
+import os
+
 from blog.security import flask_bcrypt
 from flask import Flask, render_template
 from flask_migrate import Migrate
@@ -14,16 +16,14 @@ from blog.api import init_api
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///D:\\IT\\projects\\Flask\\sqlite.db"
-#/home/PycharmProjects/Flask/blog/
-#from flask_sqlalchemy import SQLAlchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 
-# db = SQLAlchemy(app)
-#
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-app.config["SECRET_KEY"] = "abcdefg123456"
-app.config["WTF_CSRF_ENABLED"] = True  # по умолчанию
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+
+
+app.config["WTF_CSRF_ENABLED"] = True
 app.config["FLASK_ADMIN_SWATCH"] = "cosmo"
 
 app.config["OPENAPI_URL_PREFIX"] = "/api/swagger"

@@ -24,3 +24,4 @@ apispec==4.7.1
 PyYAML==5.4.1
 
 markupsafe==2.0.1
+gunicorn==20.1.0
