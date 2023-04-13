@@ -1,3 +1,4 @@
+
 import os
 from werkzeug.security import generate_password_hash
 from blog.app import app
@@ -21,9 +22,8 @@ def create_users():
 
 if __name__ == "__main__":
     app.run(
-        host="0.0.0.0",
+        host="127.0.0.1",
         debug=True,
         #port=5010,
     )
-
 
